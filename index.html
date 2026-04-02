@@ -358,13 +358,74 @@
     }
     .contact-card a:hover { color: var(--green); }
 
+    /* ── DINO LIST ───────────────────────────────────────── */
+    .dino-levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
+    .dino-level { background: var(--white); border-radius: 20px; padding: 28px 24px; border: 2px solid var(--border); }
+    .dino-level h3 { font-weight: 800; font-size: 1rem; margin-bottom: 16px; }
+    .dino-level h3 span { display: inline-block; background: var(--green-light); color: var(--green); font-size: .72rem; padding: 3px 10px; border-radius: 100px; margin-left: 8px; vertical-align: middle; }
+    .dino-level.expert h3 span { background: var(--purple-light); color: var(--purple); }
+    .dino-names { display: flex; flex-wrap: wrap; gap: 8px; }
+    .dino-tag { background: var(--bg); border: 1px solid var(--border); border-radius: 100px; padding: 5px 14px; font-size: .84rem; font-weight: 700; }
+
+    /* ── DIPLOMA BANNER ──────────────────────────────────── */
+    .diploma-banner {
+      background: linear-gradient(135deg, var(--yellow-light), #fff);
+      border: 2px solid var(--yellow);
+      border-radius: 20px; padding: 28px 32px;
+      display: flex; align-items: center; gap: 20px;
+      margin-top: 40px; flex-wrap: wrap;
+    }
+    .diploma-icon { font-size: 3rem; flex-shrink: 0; }
+    .diploma-text h3 { font-weight: 800; font-size: 1.05rem; margin-bottom: 4px; }
+    .diploma-text p { color: var(--muted); font-size: .88rem; font-weight: 600; }
+
+    /* ── FAQ ─────────────────────────────────────────────── */
+    #faq { background: var(--bg); }
+    .faq-list { max-width: 760px; }
+    .faq-item { border-bottom: 2px solid var(--border); }
+    .faq-item:first-child { border-top: 2px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      text-align: left; padding: 20px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+      color: var(--text);
+    }
+    .faq-q .arrow { font-size: 1.1rem; transition: transform .25s; flex-shrink: 0; margin-left: 16px; }
+    .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-a p { padding: 0 0 20px; color: var(--muted); font-size: .92rem; font-weight: 600; line-height: 1.65; }
+
+    /* ── NEWSLETTER ──────────────────────────────────────── */
+    #novice { background: var(--green); }
+    .newsletter-inner { text-align: center; max-width: 580px; margin: 0 auto; }
+    .newsletter-inner h2 { font-weight: 900; font-size: clamp(1.6rem, 4vw, 2.2rem); color: #fff; margin-bottom: 12px; }
+    .newsletter-inner p { color: rgba(255,255,255,.75); font-weight: 600; margin-bottom: 28px; }
+    .nl-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .nl-input {
+      flex: 1; min-width: 220px; max-width: 340px;
+      padding: 14px 20px; border-radius: 12px; border: 2px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.1); color: #fff;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .95rem;
+    }
+    .nl-input::placeholder { color: rgba(255,255,255,.5); }
+    .nl-input:focus { outline: none; border-color: var(--yellow); }
+    .nl-note { color: rgba(255,255,255,.5); font-size: .78rem; font-weight: 600; margin-top: 12px; }
+
     /* ── FOOTER ──────────────────────────────────────────── */
     footer {
-      background: var(--green); color: rgba(255,255,255,.8);
-      text-align: center; padding: 28px 24px;
-      font-size: .88rem; font-weight: 600;
+      background: #111; color: rgba(255,255,255,.55);
+      padding: 28px 24px; font-size: .82rem; font-weight: 600;
     }
-    footer a { color: var(--yellow); text-decoration: none; }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .15s; }
+    footer a:hover { color: var(--yellow); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
 
     /* ── DIVIDER ─────────────────────────────────────────── */
     hr.divider { border: none; border-top: 2px solid var(--border); }
@@ -402,12 +463,12 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="free-badge">🎉 Brezplačna delavnica</div>
-  <h1>Zgradi svojega<br><span class="green">dinozavra 🦕</span></h1>
+  <div class="free-badge">🎉 Brezplačna delavnica · Vstop prost</div>
+  <h1>Odprava v dobo<br><span class="green">dinozavrov 🦕</span></h1>
   <p class="hero-sub">
-    Otrok 1 uro gradi, se uči in ima zabavo — brez ekrana.
-    Vi si privoščite kavo v miru ali se pridružite gradnji.
-    Animatorji poskrbijo za vse. Vstop brezplačen.
+    Pred 65 milijoni let so Zemljo vladali dinozavri.
+    Danes jih vaš otrok zgradi z lastnimi rokami — brez ekrana, z nasmehom.
+    Animatorji poskrbijo za vse. Vi si privoščite zaslužen oddih.
   </p>
 
   <div class="slots-row">
@@ -436,32 +497,67 @@
 <!-- HOW IT WORKS -->
 <section id="kako">
   <div class="container">
-    <span class="section-label label-green">🦖 Kako poteka?</span>
-    <h2 class="section-title">Delavnica korak za korakom</h2>
+    <span class="section-label label-green">🦖 Prazgodovinska odprava</span>
+    <h2 class="section-title">Postanite mladi paleontologi</h2>
     <p class="section-sub">
-      12 različnih dinozavrov — 6 za mlajše (junior) in 6 za starejše (expert).
-      Bratec, sestrica, starš — vsak gradi svojega hkrati.
+      Vstopite v svet, kjer so dinozavri znova živeli. Vsak udeleženec izbere svojega, mu da ime
+      in ga zgradi z lastnimi rokami. Na koncu dobi darilno dinozavrovo figurico in
+      <strong>diplomo mlajšega paleontologa</strong>.
     </p>
+
     <div class="steps">
       <div class="step-card">
-        <span class="step-emoji">🏷️</span>
-        <h3>1. Poimenuj dinozavra</h3>
-        <p>Vsak otrok izbere model in mu da ime. Ta dinozaver je odslej vaš.</p>
+        <span class="step-emoji">🗺️</span>
+        <h3>1. Izberi svojo vrsto</h3>
+        <p>12 dinozavrov čaka na svojega graditelja. Kateri bo vaš? Poimenujte ga — od zdaj je vaš.</p>
       </div>
       <div class="step-card">
         <span class="step-emoji">🧱</span>
-        <h3>2. Gradite skupaj</h3>
-        <p>Animatorji vodijo otroke skozi gradnjo. Starši se sprostijo ali se pridružijo zabavi.</p>
+        <h3>2. Zgradite ga iz kosov</h3>
+        <p>Animatorji vodijo otroke korak za korakom. Starši si privoščijo oddih ali se pridružijo gradnji.</p>
       </div>
       <div class="step-card">
-        <span class="step-emoji">📸</span>
-        <h3>3. Fotografija za spomin</h3>
-        <p>Skupinska fotografija z vašim dinozavrom — spomin na poseben dan.</p>
+        <span class="step-emoji">🎓</span>
+        <h3>3. Prejmite diplomo</h3>
+        <p>Vsak udeleženec dobi uradno <em>diplomo mlajšega paleontologa</em> in dinozavrovo figurico v dar.</p>
       </div>
       <div class="step-card">
         <span class="step-emoji">🎒</span>
-        <h3>4. Odnesite komplet domov</h3>
-        <p>Kupite vrečko kosov z navodili in gradite vseh 12 modelov kadar koli doma.</p>
+        <h3>4. Nadaljujte doma</h3>
+        <p>Kupite komplet kosov z navodili in odkrivajte vseh 12 vrst dinozavrov kdaj koli doma.</p>
+      </div>
+    </div>
+
+    <div class="dino-levels">
+      <div class="dino-level">
+        <h3>🟢 Junior gradnja <span>8+ let</span></h3>
+        <div class="dino-names">
+          <span class="dino-tag">🦖 T-Rex</span>
+          <span class="dino-tag">🦕 Triceratops</span>
+          <span class="dino-tag">🦕 Apatosaurus</span>
+          <span class="dino-tag">🦴 Stegosaurus</span>
+          <span class="dino-tag">🦕 Diplodocus</span>
+          <span class="dino-tag">🦕 Brachiosaurus</span>
+        </div>
+      </div>
+      <div class="dino-level expert">
+        <h3>🔵 Expert gradnja <span>12+ let</span></h3>
+        <div class="dino-names">
+          <span class="dino-tag">🦎 Velociraptor</span>
+          <span class="dino-tag">🛡️ Ankylosaurus</span>
+          <span class="dino-tag">🦅 Pterodactylus</span>
+          <span class="dino-tag">⚔️ Spinosaurus</span>
+          <span class="dino-tag">🎺 Parasaurolophus</span>
+          <span class="dino-tag">🪖 Pachycephalosaurus</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="diploma-banner">
+      <div class="diploma-icon">🎓</div>
+      <div class="diploma-text">
+        <h3>Vsak udeleženec dobi brezplačno:</h3>
+        <p>🦕 Dinozavrova figurica v dar · 📜 Diploma mlajšega paleontologa · 📸 Skupinska fotografija za spomin</p>
       </div>
     </div>
   </div>
@@ -740,12 +836,94 @@
   </div>
 </section>
 
+<hr class="divider" />
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-label label-green">❓ Pogosta vprašanja</span>
+    <h2 class="section-title">Vse, kar morate vedeti</h2>
+    <div class="faq-list">
+
+      <div class="faq-item open">
+        <button class="faq-q">Za katero starost je delavnica primerna? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Delavnica je primerna za otroke od 8 let naprej. Junior gradnje so prilagojene otrokom od 8 do 12 let, expert gradnje pa za otroke od 12 let in odrasle. Mlajši otroci so dobrodošli v spremstvu starša, ki jim pomaga pri gradnji.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Je vstop res brezplačen? Kaj plačam? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Da, vstop na delavnico je popolnoma brezplačen. Vsak udeleženec dobi dinozavrovo figurico in diplomo paleontologa brez doplačila. Komplete kosov za domačo gradnjo pa lahko kupite na dan delavnice po posebni delavniški ceni.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Ali moram otroka prijaviti vnaprej? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Da, prijava je obvezna, ker so mesta omejena. Prijavite se po e-pošti ali telefonu. Termin vam potrdimo v 24 urah.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Ali morajo starši ostati med delavnico? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Ne, ni obvezno. Naši animatorji poskrbijo za otroke ves čas delavnice. Starši se lahko sprostijo v bližnji kavarni ali se — po želji — pridružijo gradnji. Delavnica traja 1 uro.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Kaj se zgodi, če izgubim ali zlomim kos? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Pošljite nam sporočilo in zamenjalni kos vam pošljemo brezplačno. Brez doplačila, brez vprašanj. Za vedno. To je naša garancija.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Kateri dinozavri so na voljo? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Na voljo je 12 različnih vrst: 6 junior modelov (T-Rex, Triceratops, Apatosaurus, Stegosaurus, Diplodocus, Brachiosaurus) in 6 expert modelov (Velociraptor, Ankylosaurus, Pterodactylus, Spinosaurus, Parasaurolophus, Pachycephalosaurus). Vsak udeleženec izbere svojo vrsto na delavnici.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Ali je delavnica primerna za rojstnodnevno zabavo? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Absolutno! Ob vikendih imamo na voljo večji prostor za do 100 oseb, primeren za skupinske prireditve. Kontaktirajte nas za rezervacijo in pripravo posebnega programa.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- NEWSLETTER -->
+<section id="novice">
+  <div class="container">
+    <div class="newsletter-inner">
+      <h2>🦕 Ne zamudite naslednje delavnice</h2>
+      <p>Vpišite se in prejmite obvestilo o novih terminih, novih dinozavrih in ekskluzivnih popustih za naročnike.</p>
+      <form class="nl-form" action="mailto:info@planetzabave.si" method="get" enctype="text/plain">
+        <input class="nl-input" type="email" name="email" placeholder="Vaš e-poštni naslov" required />
+        <button type="submit" class="btn btn-yellow">Prijava 🦖</button>
+      </form>
+      <p class="nl-note">Brez neželene pošte. Odjava kadarkoli. Vaši podatki so varni.</p>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <p>© 2026 Planet Zabave · Ljubljana ·
-    <a href="mailto:info@planetzabave.si">info@planetzabave.si</a> ·
-    <a href="tel:+38670311971">070 311 971</a>
-  </p>
+  <div class="footer-inner">
+    <span>© 2026 Planet Zabave · BTC Ljubljana, Latinski trg 6</span>
+    <div class="footer-links">
+      <a href="mailto:info@planetzabave.si">info@planetzabave.si</a>
+      <a href="tel:+38670311971">070 311 971</a>
+      <a href="privacy.html">Politika zasebnosti</a>
+      <a href="tos.html">Pogoji uporabe</a>
+    </div>
+  </div>
 </footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
 
 </body>
 </html>
