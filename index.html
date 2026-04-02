@@ -196,13 +196,13 @@
 
     .price-card h3 { font-weight: 800; font-size: 1.1rem; margin-bottom: 18px; }
 
-    .price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+    .price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
     .price-original {
-      font-weight: 700; font-size: 1.4rem; color: var(--strike);
-      text-decoration: line-through;
+      font-weight: 700; font-size: .95rem; color: var(--red);
+      text-decoration: line-through; opacity: .85;
     }
-    .price-now { font-weight: 900; font-size: 2.8rem; color: var(--green); line-height: 1; }
-    .price-now sup { font-size: 1.2rem; vertical-align: top; margin-top: 6px; display: inline-block; }
+    .price-now { font-weight: 900; font-size: 3.2rem; color: var(--green); line-height: 1; }
+    .price-now sup { font-size: 1.2rem; vertical-align: top; margin-top: 8px; display: inline-block; }
     .price-saving {
       display: inline-block; background: var(--red); color: #fff;
       font-size: .72rem; font-weight: 800; padding: 3px 10px; border-radius: 100px;
@@ -240,30 +240,38 @@
     .guarantee-card h3 { font-weight: 800; font-size: 1rem; color: var(--green); margin-bottom: 6px; }
     .guarantee-card p { color: var(--muted); font-size: .88rem; font-weight: 600; }
 
-    /* ── TESTIMONIALS ────────────────────────────────────── */
+    /* ── TESTIMONIALS (DM screenshot style) ─────────────── */
     #mnenja { background: var(--white); }
-    .testimonial-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .dm-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 24px;
     }
-    .testimonial-card {
-      background: var(--bg); border: 2px solid var(--border); border-radius: 20px;
-      padding: 28px 24px; transition: border-color .2s;
+    .dm-card {
+      background: #1C1C1E; border-radius: 20px; padding: 20px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.18);
     }
-    .testimonial-card:hover { border-color: var(--green); }
-    .stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
-    .testimonial-card blockquote {
-      font-size: .95rem; font-weight: 600; color: var(--text);
-      font-style: italic; margin-bottom: 16px; line-height: 1.6;
+    .dm-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+      padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .author-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--green-light); display: flex; align-items: center;
-      justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    .dm-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
     }
-    .author-name { font-weight: 800; font-size: .9rem; }
-    .author-loc  { font-size: .78rem; color: var(--muted); font-weight: 600; }
+    .dm-meta { flex: 1; }
+    .dm-name { font-weight: 800; font-size: .88rem; color: #fff; }
+    .dm-handle { font-size: .74rem; color: rgba(255,255,255,.45); }
+    .dm-platform { font-size: .72rem; color: rgba(255,255,255,.3); margin-left: auto; }
+    .dm-bubble {
+      background: #2C2C2E; border-radius: 16px 16px 16px 4px;
+      padding: 14px 16px; margin-bottom: 8px;
+    }
+    .dm-bubble p {
+      color: #F0F0F0; font-size: .88rem; font-weight: 600; line-height: 1.55;
+    }
+    .dm-time { font-size: .72rem; color: rgba(255,255,255,.35); padding-left: 4px; }
 
     /* ── GALLERY ─────────────────────────────────────────── */
     #galerija { background: var(--purple-light); }
@@ -397,9 +405,9 @@
   <div class="free-badge">🎉 Brezplačna delavnica</div>
   <h1>Zgradi svojega<br><span class="green">dinozavra 🦕</span></h1>
   <p class="hero-sub">
-    Ustvarjalna delavnica za otroke in starše v Ljubljani.
-    Skupaj poimenujte, zgradite in odnesite dinozavra domov.
-    Animatorji poskrbijo za otroke — starši si privoščijo oddih ali se pridružijo zabavi.
+    Otrok 1 uro gradi, se uči in ima zabavo — brez ekrana.
+    Vi si privoščite kavo v miru ali se pridružite gradnji.
+    Animatorji poskrbijo za vse. Vstop brezplačen.
   </p>
 
   <div class="slots-row">
@@ -563,40 +571,53 @@
     <span class="section-label label-green">💬 Mnenja staršev</span>
     <h2 class="section-title">Kaj pravijo drugi starši?</h2>
     <p class="section-sub">Pridružite se družinam, ki so že odkrile Planet Zabave.</p>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>„Naš sin je bil popolnoma navdušen! Animatorji so bili super potrpežljivi, jaz pa sem si prvič po dolgem prvič privoščila kavo v miru. Domov smo odšli z dvema dinozavrома in ogromno nasmehom."</blockquote>
-        <div class="testimonial-author">
-          <div class="author-avatar">👩</div>
-          <div>
-            <div class="author-name">Maja K.</div>
-            <div class="author-loc">Ljubljana, mama 6-letnika</div>
+    <div class="dm-grid">
+
+      <div class="dm-card">
+        <div class="dm-header">
+          <div class="dm-avatar">👩</div>
+          <div class="dm-meta">
+            <div class="dm-name">Maja Kovač</div>
+            <div class="dm-handle">@maja.kovac.lj</div>
           </div>
+          <div class="dm-platform">Instagram DM</div>
         </div>
+        <div class="dm-bubble">
+          <p>Hej! Samo htela sem povedat — sin je bil danes pri vas in sem ga komaj dobila domov 😂 Celo uro brez telefona, brez jokanja, brez "kdaj gremo". Jaz sem pa prvič po mesecih popila kavo brez prekinitev. To je bila najboljša odločitev. Hvala! 🙏</p>
+        </div>
+        <div class="dm-time">včeraj ob 18:42 · Prebrano</div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>„Vzeli smo škatlo za darilo za rojstni dan — hči je bila navdušena. Kosi so kakovostni, navodila jasna, in garancija na zamenjavo kosov je bila zame kot starš čisto pravi prodajni argument."</blockquote>
-        <div class="testimonial-author">
-          <div class="author-avatar">👨</div>
-          <div>
-            <div class="author-name">Tomaž P.</div>
-            <div class="author-loc">Domžale, oče 8-letnice</div>
+
+      <div class="dm-card">
+        <div class="dm-header">
+          <div class="dm-avatar">👨</div>
+          <div class="dm-meta">
+            <div class="dm-name">Tomaž Peterlin</div>
+            <div class="dm-handle">@tpeterlin</div>
           </div>
+          <div class="dm-platform">Facebook</div>
         </div>
+        <div class="dm-bubble">
+          <p>Živjo, prišli smo z obema otrokoma — 5 in 9 let. Vsak je dobil svojega dinozavra, mlajši lažjega, starejši zahtevnejšega. Oba zaposlena, midva pa sva se eno uro pogovarjala brez prekinitev 😄 Vzeli smo še škatlo za darilo. Priporočam!</p>
+        </div>
+        <div class="dm-time">pred 3 dnevi · Prebrano</div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>„Prišli smo z dvema otrokoma — vsak je gradil svojega dinozavra hkrati. Mlajši junior model, starejši zahtevnejšega. Oba sta bila zaposlena celo uro, midva pa sva se pogovarjala brez prekinitev. To je redkost!"</blockquote>
-        <div class="testimonial-author">
-          <div class="author-avatar">👩</div>
-          <div>
-            <div class="author-name">Ana M.</div>
-            <div class="author-loc">Ljubljana, mama 5- in 9-letnika</div>
+
+      <div class="dm-card">
+        <div class="dm-header">
+          <div class="dm-avatar">👩</div>
+          <div class="dm-meta">
+            <div class="dm-name">Ana Mlakar</div>
+            <div class="dm-handle">@ana.mlakar</div>
           </div>
+          <div class="dm-platform">Instagram DM</div>
         </div>
+        <div class="dm-bubble">
+          <p>Lepo od vas! Hči je doma že zgradila 4 dinozavre in vsak dobi ime in "domačo zgodbo" 😂 Nič telefonov, nič YouTuba. In se je pri tem naučila brati navodila, biti potrpežljiva... Bom priporočila vsem mamicam v razredu ❤️</p>
+        </div>
+        <div class="dm-time">pred tednom · Prebrano</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -708,6 +729,12 @@
       <div class="contact-card">
         <div class="clabel">Vikend prireditve</div>
         <span>Po dogovoru</span>
+      </div>
+      <div class="contact-card">
+        <div class="clabel">Lokacija</div>
+        <a href="https://maps.google.com/?q=Latinski+trg+6+Ljubljana" target="_blank">
+          BTC Ljubljana<br>Stavba Emporium, pritličje<br>Latinski trg 6
+        </a>
       </div>
     </div>
   </div>
