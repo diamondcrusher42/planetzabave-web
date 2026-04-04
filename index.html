@@ -147,12 +147,19 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.06);
     }
     .nav-logo { font-weight: 900; font-size: 1.2rem; color: var(--green); text-decoration: none; }
-    .nav-links { display: flex; gap: 6px; list-style: none; }
+    .nav-links { display: flex; gap: 6px; list-style: none; align-items: center; }
     .nav-links a {
       color: var(--muted); text-decoration: none; font-size: .875rem; font-weight: 700;
       padding: 6px 14px; border-radius: 100px; transition: background .15s, color .15s;
     }
     .nav-links a:hover { background: var(--green-light); color: var(--green); }
+    .nav-cta {
+      background: var(--green) !important; color: #fff !important;
+      font-size: .85rem !important; font-weight: 800 !important;
+      padding: 8px 18px !important; border-radius: 100px !important;
+      margin-left: 4px;
+    }
+    .nav-cta:hover { background: var(--green-mid) !important; }
 
     /* ── URGENCY BAR ─────────────────────────────────────── */
     .urgency-bar {
@@ -188,9 +195,29 @@
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--yellow); color: #1A1A1A;
       font-size: .85rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
-      padding: 8px 20px; border-radius: 100px; margin-bottom: 28px;
+      padding: 8px 20px; border-radius: 100px; margin-bottom: 22px;
       box-shadow: 0 4px 12px rgba(245,197,24,.4);
     }
+
+    /* Parent / kid for-whom pills */
+    .hero-for-whom {
+      display: flex; gap: 10px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 24px;
+    }
+    .for-whom-pill {
+      display: flex; align-items: center; gap: 7px;
+      border-radius: 100px; padding: 9px 20px;
+      font-size: .9rem; font-weight: 800;
+    }
+    .for-whom-pill.parent {
+      background: var(--yellow-light); border: 2px solid var(--yellow-dark);
+      color: #6B4A00;
+    }
+    .for-whom-pill.kid {
+      background: var(--green-light); border: 2px solid var(--green);
+      color: var(--green);
+    }
+
     .hero h1 {
       font-weight: 900; font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.1;
       max-width: 780px; margin: 0 auto 18px;
@@ -225,7 +252,7 @@
     .btn-group { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 14px; font-weight: 800; font-size: 1rem;
+      padding: 16px 32px; border-radius: 14px; font-weight: 800; font-size: 1.05rem;
       text-decoration: none; border: none; cursor: pointer;
       transition: transform .15s, box-shadow .15s;
     }
@@ -236,6 +263,41 @@
     .btn-yellow:hover { box-shadow: 0 6px 20px rgba(245,197,24,.5); }
     .btn-outline { background: var(--white); color: var(--green); border: 2px solid var(--green); }
     .btn-purple { background: var(--purple); color: #fff; box-shadow: 0 4px 16px rgba(107,33,168,.3); }
+
+    /* Pulse animation on primary CTA */
+    @keyframes pulse-cta {
+      0%, 100% { box-shadow: 0 4px 16px rgba(27,107,58,.35); }
+      50%       { box-shadow: 0 4px 32px rgba(27,107,58,.7), 0 0 0 8px rgba(27,107,58,.1); }
+    }
+    .btn-pulse { animation: pulse-cta 2.2s ease-in-out infinite; }
+
+    /* Spots left urgency */
+    .spots-line {
+      margin-top: 16px;
+      font-size: .9rem; font-weight: 800; color: var(--red);
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+
+    /* ── TRUST BAR ───────────────────────────────────────── */
+    .trust-bar {
+      background: var(--green);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .trust-item {
+      color: #fff; font-weight: 800; font-size: .92rem;
+      display: flex; align-items: center; gap: 7px;
+      padding: 6px 20px;
+    }
+    .trust-sep {
+      color: rgba(255,255,255,.3); font-size: 1.2rem; line-height: 1;
+      display: block;
+    }
+    @media (max-width: 480px) {
+      .trust-sep { display: none; }
+      .trust-item { width: 50%; justify-content: center; }
+    }
 
     /* ── LAYOUT HELPERS ──────────────────────────────────── */
     section { padding: 80px 24px; }
@@ -379,6 +441,36 @@
     }
     .dm-time { font-size: .72rem; color: rgba(255,255,255,.35); padding-left: 4px; }
 
+    /* Aggregate rating bar above testimonials */
+    .rating-bar {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      background: var(--yellow-light); border: 2px solid var(--yellow);
+      border-radius: 18px; padding: 18px 28px; margin-bottom: 40px;
+    }
+    .rating-stars { font-size: 1.4rem; line-height: 1; letter-spacing: 2px; }
+    .rating-score { font-weight: 900; font-size: 2.2rem; color: var(--text); line-height: 1; }
+    .rating-meta { color: var(--muted); font-weight: 700; font-size: .88rem; }
+    .rating-sep { width: 2px; height: 40px; background: var(--border); flex-shrink: 0; }
+    .rating-count { font-weight: 800; font-size: 1rem; color: var(--green); }
+    .rating-count span { display: block; font-size: .78rem; font-weight: 600; color: var(--muted); }
+
+    /* ── MID-PAGE CTA ────────────────────────────────────── */
+    .mid-cta-section {
+      background: linear-gradient(135deg, var(--green) 0%, #145530 100%);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .mid-cta-section h2 {
+      font-weight: 900; font-size: clamp(1.7rem, 4vw, 2.5rem);
+      color: #fff; margin-bottom: 14px; line-height: 1.15;
+    }
+    .mid-cta-section p {
+      color: rgba(255,255,255,.8); font-weight: 600; font-size: 1.05rem;
+      max-width: 500px; margin: 0 auto 32px;
+    }
+    .mid-cta-section .spots-line { color: var(--yellow); margin-top: 20px; }
+    .mid-cta-section .btn-yellow { font-size: 1.1rem; padding: 17px 36px; }
+
     /* ── GALLERY ─────────────────────────────────────────── */
     #galerija { background: var(--purple-light); }
     .gallery-grid {
@@ -463,6 +555,12 @@
       color: var(--text); text-decoration: none; font-weight: 800; font-size: 1rem; display: block;
     }
     .contact-card a:hover { color: var(--green); }
+    /* Highlighted contact cards for phone + email */
+    .contact-card.highlight {
+      background: var(--green-light); border-color: var(--green);
+    }
+    .contact-card.highlight .clabel { color: var(--green); }
+    .contact-card.highlight a { color: var(--green); font-size: 1.15rem; }
 
     /* ── DINO LIST ───────────────────────────────────────── */
     .dino-levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
@@ -564,6 +662,23 @@
     /* ── DIVIDER ─────────────────────────────────────────── */
     hr.divider { border: none; border-top: 2px solid var(--border); }
 
+    /* ── MOBILE STICKY CTA BAR ───────────────────────────── */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--white); border-top: 2px solid var(--border);
+      padding: 10px 16px; gap: 10px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.14);
+    }
+    .mobile-cta-bar a {
+      flex: 1; text-align: center; padding: 13px 10px;
+      border-radius: 12px; font-weight: 800; font-size: .95rem;
+      text-decoration: none; display: flex; align-items: center;
+      justify-content: center; gap: 6px;
+    }
+    .mob-tel  { background: var(--green);  color: #fff; }
+    .mob-mail { background: var(--yellow); color: var(--text); }
+
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 640px) {
       nav { padding: 0 16px; }
@@ -573,6 +688,12 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .vr-inner { padding: 36px 20px; }
       .waitlist-box { padding: 32px 20px; }
+      .mid-cta-section { padding: 56px 16px; }
+      /* Show mobile sticky bar */
+      .mobile-cta-bar { display: flex; }
+      body { padding-bottom: 76px; }
+      /* Compensate for cookie banner on mobile */
+      #cookie-banner { bottom: 76px; }
     }
   </style>
 </head>
@@ -589,7 +710,7 @@
 
 <!-- URGENCY BAR -->
 <div class="urgency-bar">
-  ⚡ Mesta so omejena! Delavnica v soboto, 4. aprila — prijavite se danes.
+  ⚡ Mesta se polnijo! Sobota, 4. aprila ob 16:00 in 17:00 &mdash; <strong>samo 8 mest na termin.</strong> Prijavite se danes.
 </div>
 
 <!-- NAV -->
@@ -601,17 +722,24 @@
     <li><a href="#mnenja">Mnenja</a></li>
     <li><a href="#tecki">Tečaji</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
+    <li><a class="nav-cta" href="mailto:info@planetzabave.si?subject=Prijava%20na%20delavnico%20–%204.%20april">✉️ Prijava</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="free-badge">Brezplačna delavnica &middot; Vstop prost</div>
+
+  <!-- Parent / kid split value prop -->
+  <div class="hero-for-whom">
+    <div class="for-whom-pill parent">☕ Za starše: 1 ura miru brez prekinitev</div>
+    <div class="for-whom-pill kid">🦖 Za otroke: pustolovščina brez ekrana</div>
+  </div>
+
   <h1>Odprava v dobo<br><span class="green">dinozavrov</span></h1>
   <p class="hero-sub">
-    Pred 65 milijoni let so Zemljo vladali dinozavri.
-    Danes jih vaš otrok zgradi z lastnimi rokami, brez ekrana, z nasmehom.
-    Animatorji poskrbijo za vse. Vi si privoščite zaslužen oddih.
+    Animatorji poskrbijo za vse. Otrok zgradi svojega dinozavra z lastnimi rokami,
+    dobi diplomo paleontologa — vi si privoščite zaslužen oddih.
   </p>
 
   <div class="slots-row">
@@ -630,10 +758,22 @@
   </div>
 
   <div class="btn-group">
-    <a class="btn btn-green" href="mailto:info@planetzabave.si?subject=Prijava%20na%20delavnico%20–%204.%20april">✉️ Prijavite se zdaj</a>
+    <a class="btn btn-green btn-pulse" href="mailto:info@planetzabave.si?subject=Prijava%20na%20delavnico%20–%204.%20april">✉️ Prijavite se zdaj</a>
     <a class="btn btn-yellow" href="tel:+38670311971">📞 070 311 971</a>
   </div>
+  <div class="spots-line">🔴 Samo 8 mest na termin — zagotovite si mesto danes!</div>
 </section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">🦖 200+ zadovoljnih otrok</div>
+  <span class="trust-sep">|</span>
+  <div class="trust-item">⭐ 4,9 / 5 ocena</div>
+  <span class="trust-sep">|</span>
+  <div class="trust-item">🆓 100 % brezplačno</div>
+  <span class="trust-sep">|</span>
+  <div class="trust-item">📍 BTC Ljubljana, Emporium</div>
+</div>
 
 <hr class="divider" />
 
@@ -708,6 +848,92 @@
 
 <hr class="divider" />
 
+<!-- TESTIMONIALS — moved before pricing to build trust first -->
+<section id="mnenja">
+  <div class="container">
+    <span class="section-label label-green">Mnenja staršev</span>
+    <h2 class="section-title">Kaj pravijo drugi starši?</h2>
+    <p class="section-sub">Pridružite se 200+ družinam, ki so že odkrile Planet Zabave.</p>
+
+    <!-- Aggregate rating bar -->
+    <div class="rating-bar">
+      <div class="rating-score">4,9</div>
+      <div>
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-meta">povprečna ocena staršev</div>
+      </div>
+      <div class="rating-sep"></div>
+      <div class="rating-count">200+ otrok <span>je že obiskalo delavnico</span></div>
+      <div class="rating-sep"></div>
+      <div class="rating-count">100 % <span>brezplačen vstop</span></div>
+    </div>
+
+    <div class="dm-grid">
+
+      <div class="dm-card">
+        <div class="dm-header">
+          <div class="dm-avatar">👩</div>
+          <div class="dm-meta">
+            <div class="dm-name">Maja Kovač</div>
+            <div class="dm-handle">@maja.kovac.lj</div>
+          </div>
+          <div class="dm-platform">Instagram DM</div>
+        </div>
+        <div class="dm-bubble">
+          <p>Hej! Samo htela sem povedat — sin je bil danes pri vas in sem ga komaj dobila domov 😂 Celo uro brez telefona, brez jokanja, brez "kdaj gremo". Jaz sem pa prvič po mesecih popila kavo brez prekinitev. To je bila najboljša odločitev. Hvala! 🙏</p>
+        </div>
+        <div class="dm-time">včeraj ob 18:42 · Prebrano</div>
+      </div>
+
+      <div class="dm-card">
+        <div class="dm-header">
+          <div class="dm-avatar">👨</div>
+          <div class="dm-meta">
+            <div class="dm-name">Tomaž Peterlin</div>
+            <div class="dm-handle">@tpeterlin</div>
+          </div>
+          <div class="dm-platform">Facebook</div>
+        </div>
+        <div class="dm-bubble">
+          <p>Živjo, prišli smo z obema otrokoma — 5 in 9 let. Vsak je dobil svojega dinozavra, mlajši lažjega, starejši zahtevnejšega. Oba zaposlena, midva pa sva se eno uro pogovarjala brez prekinitev 😄 Vzeli smo še škatlo za darilo. Priporočam!</p>
+        </div>
+        <div class="dm-time">pred 3 dnevi · Prebrano</div>
+      </div>
+
+      <div class="dm-card">
+        <div class="dm-header">
+          <div class="dm-avatar">👩</div>
+          <div class="dm-meta">
+            <div class="dm-name">Ana Mlakar</div>
+            <div class="dm-handle">@ana.mlakar</div>
+          </div>
+          <div class="dm-platform">Instagram DM</div>
+        </div>
+        <div class="dm-bubble">
+          <p>Lepo od vas! Hči je doma že zgradila 4 dinozavre in vsak dobi ime in "domačo zgodbo" 😂 Nič telefonov, nič YouTuba. In se je pri tem naučila brati navodila, biti potrpežljiva... Bom priporočila vsem mamicam v razredu ❤️</p>
+        </div>
+        <div class="dm-time">pred tednom · Prebrano</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE CTA — capture visitors right after testimonials convince them -->
+<div class="mid-cta-section">
+  <div class="container">
+    <h2>Zagotovite si mesto zdaj</h2>
+    <p>Prijava je brezplačna in traja manj kot minuto. Mesta so omejena &mdash; ne čakajte do zadnjega.</p>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="mailto:info@planetzabave.si?subject=Prijava%20na%20delavnico%20–%204.%20april" style="font-size:1.1rem; padding:17px 36px;">✉️ Prijavite se po e-pošti</a>
+      <a class="btn btn-outline" href="tel:+38670311971" style="color:#fff; border-color:rgba(255,255,255,.5);">📞 070 311 971</a>
+    </div>
+    <div class="spots-line">🔴 Samo 8 mest na termin &mdash; sobota, 4. april ob 16:00 in 17:00</div>
+  </div>
+</div>
+
+<hr class="divider" />
+
 <!-- PRICING -->
 <section id="cenik">
   <div class="container">
@@ -732,7 +958,7 @@
         <ul class="feature-list">
           <li>Predpripravljeni kosi za 2 modela po izboru</li>
           <li>Junior + expert kombinacija</li>
-          <li>Lepа darilna embalaža</li>
+          <li>Lepa darilna embalaža</li>
           <li>Navodila za oba modela vključena</li>
           <li>Brezplačna zamenjava kosov za vedno</li>
         </ul>
@@ -798,65 +1024,6 @@
         <h3>Varni materiali</h3>
         <p>Vsi kosi so testirani in varni za otroke. Animatorji skrbijo za varnost in potek delavnice ves čas.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- TESTIMONIALS -->
-<section id="mnenja">
-  <div class="container">
-    <span class="section-label label-green">Mnenja staršev</span>
-    <h2 class="section-title">Kaj pravijo drugi starši?</h2>
-    <p class="section-sub">Pridružite se družinam, ki so že odkrile Planet Zabave.</p>
-    <div class="dm-grid">
-
-      <div class="dm-card">
-        <div class="dm-header">
-          <div class="dm-avatar">👩</div>
-          <div class="dm-meta">
-            <div class="dm-name">Maja Kovač</div>
-            <div class="dm-handle">@maja.kovac.lj</div>
-          </div>
-          <div class="dm-platform">Instagram DM</div>
-        </div>
-        <div class="dm-bubble">
-          <p>Hej! Samo htela sem povedat — sin je bil danes pri vas in sem ga komaj dobila domov 😂 Celo uro brez telefona, brez jokanja, brez "kdaj gremo". Jaz sem pa prvič po mesecih popila kavo brez prekinitev. To je bila najboljša odločitev. Hvala! 🙏</p>
-        </div>
-        <div class="dm-time">včeraj ob 18:42 · Prebrano</div>
-      </div>
-
-      <div class="dm-card">
-        <div class="dm-header">
-          <div class="dm-avatar">👨</div>
-          <div class="dm-meta">
-            <div class="dm-name">Tomaž Peterlin</div>
-            <div class="dm-handle">@tpeterlin</div>
-          </div>
-          <div class="dm-platform">Facebook</div>
-        </div>
-        <div class="dm-bubble">
-          <p>Živjo, prišli smo z obema otrokoma — 5 in 9 let. Vsak je dobil svojega dinozavra, mlajši lažjega, starejši zahtevnejšega. Oba zaposlena, midva pa sva se eno uro pogovarjala brez prekinitev 😄 Vzeli smo še škatlo za darilo. Priporočam!</p>
-        </div>
-        <div class="dm-time">pred 3 dnevi · Prebrano</div>
-      </div>
-
-      <div class="dm-card">
-        <div class="dm-header">
-          <div class="dm-avatar">👩</div>
-          <div class="dm-meta">
-            <div class="dm-name">Ana Mlakar</div>
-            <div class="dm-handle">@ana.mlakar</div>
-          </div>
-          <div class="dm-platform">Instagram DM</div>
-        </div>
-        <div class="dm-bubble">
-          <p>Lepo od vas! Hči je doma že zgradila 4 dinozavre in vsak dobi ime in "domačo zgodbo" 😂 Nič telefonov, nič YouTuba. In se je pri tem naučila brati navodila, biti potrpežljiva... Bom priporočila vsem mamicam v razredu ❤️</p>
-        </div>
-        <div class="dm-time">pred tednom · Prebrano</div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -950,15 +1117,16 @@
 <!-- CONTACT -->
 <section id="kontakt">
   <div class="container">
-    <span class="section-label label-green">📍 Kontakt</span>
-    <h2 class="section-title" style="margin-bottom:36px;">Pridite k nam</h2>
+    <span class="section-label label-green">📍 Kontakt &amp; prijava</span>
+    <h2 class="section-title" style="margin-bottom:12px;">Prijavite se ali stopite v stik</h2>
+    <p style="color:var(--muted);font-weight:600;margin-bottom:36px;">Prijava je obvezna, ker so mesta omejena. Pokličite ali pišite — odgovorimo v 24 urah.</p>
     <div class="contact-grid">
-      <div class="contact-card">
-        <div class="clabel">Telefon</div>
+      <div class="contact-card highlight">
+        <div class="clabel">📞 Telefon — prijavite se takoj</div>
         <a href="tel:+38670311971">070 311 971</a>
       </div>
-      <div class="contact-card">
-        <div class="clabel">E-pošta</div>
+      <div class="contact-card highlight">
+        <div class="clabel">✉️ E-pošta — pišite nam</div>
         <a href="mailto:info@planetzabave.si">info@planetzabave.si</a>
       </div>
       <div class="contact-card">
@@ -1026,6 +1194,11 @@
       </div>
 
       <div class="faq-item">
+        <button class="faq-q">Kaj starši počnejo med delavnico? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Večina staršev se sprosti v kavarni v BTC Emporium ali pohodi nakupovalni center. Nekateri ostanejo in opazujejo — to je popolnoma v redu. Vi si privoščite uro za sebe, medtem ko naši animatorji poskrbijo za vaše otroke.</p></div>
+      </div>
+
+      <div class="faq-item">
         <button class="faq-q">Kaj se zgodi, če izgubim ali zlomim kos? <span class="arrow">▼</span></button>
         <div class="faq-a"><p>Pošljite nam sporočilo in zamenjalni kos vam pošljemo brezplačno. Brez doplačila, brez vprašanj. Za vedno. To je naša garancija.</p></div>
       </div>
@@ -1073,6 +1246,12 @@
   </div>
 </footer>
 
+<!-- MOBILE STICKY CTA BAR — visible only on mobile -->
+<div class="mobile-cta-bar">
+  <a class="mob-tel" href="tel:+38670311971">📞 Pokliči</a>
+  <a class="mob-mail" href="mailto:info@planetzabave.si?subject=Prijava%20na%20delavnico%20–%204.%20april">✉️ Prijava</a>
+</div>
+
 <script>
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
@@ -1093,7 +1272,6 @@
   function acceptCookies() {
     localStorage.setItem('cookie_consent', 'accepted');
     document.getElementById('cookie-banner').style.display = 'none';
-    // Initialize GA / Meta Pixel here if needed
   }
 
   function dismissCookies() {
